@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Search By Question</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="plugin/jquery_mlkeyboard/jquery.ml-keyboard.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+</head>
+
+<body>
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="#">&nbsp;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</header>
+
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    <div style="margin-top: 200px" class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Search By Question</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                        <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="When did Ataturk die ?" />
+                        <span class="input-group-btn">
+                        <button id="keyforinput" class="btn btn-light">
+                            <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                        </button>
+
+                        <button class="btn btn-info btn-lg" onclick="askquestion();" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <p style="color: #666666; margin-top: 10px" class="text-center">
+                You can find answers of your questions with search by question
+            </p>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Search By Question Team</span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input#keyboardText').mlKeyboard({
+            layout: 'en_US',
+            active_shift: false,
+            active_caps: false,
+            trigger: '#keyforinput',
+            is_hidden: true,
+        });
+    });
+</script>
+</body>
+</html>
