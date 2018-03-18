@@ -11,12 +11,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- css to share buttons -->
+    <link rel="stylesheet" type="text/css" href="css/jssocials.css">  
+    <!-- min css to share buttons -->
+    <link rel="stylesheet" type ="text/css" href="css/jssocials-theme-flat.css"> 
 
     <!-- Custom styles for this template -->
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="plugin/jquery_mlkeyboard/jquery.ml-keyboard.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+    <!-- js to share buttons -->
+    <script src="js/jssocials.js"></script>
+    <!-- min js to share buttons --> 
+    <script src="js/jssocials.min.js"></script> 
+
+    <script>
+     /* function search()
+     {
+        $('#req').modal('show')
+     } */
+    </script>
+
 </head>
 
 <body>
@@ -39,24 +55,54 @@
             <h2 class="text-center">Search By Question</h2>
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                        <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="When did Ataturk die ?" />
+                        <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="Type Your Question" maxlength="160"/>
                         <span class="input-group-btn">
                         <button id="keyforinput" class="btn btn-light">
                             <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                         </button>
 
-                        <button class="btn btn-info btn-lg" onclick="askquestion();" type="button">
+                        <button class="btn btn-info btn-lg" data-toggle="modal" onclick="search();" type="button">
                             <i class="fa fa-search"></i>
                         </button>
                     </span>
                 </div>
             </div>
-            <p style="color: #666666; margin-top: 10px" class="text-center">
-                You can find answers of your questions with search by question
-            </p>
+        <!--share buttons --> 
+        <div style="margin-top: 10px" class="text-center">      
+            <div id="share">
+                <script>
+                    $("#share").jsSocials({
+                        showLabel: false,
+                        showCount: false,
+                        shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+                    });
+                </script> 
+                <div style="margin-top: 15px" class="text-center"><button type="button" class="btn">Copy Question</button></div>
+            </div>
+        </div>    
         </div>
     </div>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="req" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="req">Requirements</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Your question is not in 5W1H format.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 <footer class="footer">
     <div class="container">
