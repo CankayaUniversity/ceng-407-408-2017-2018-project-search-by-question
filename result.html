@@ -9,11 +9,32 @@
         <title>Search By Question</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         <!-- css to share buttons -->
+         <link rel="stylesheet" type="text/css" href="css/jssocials.css">  
+         <!-- min css to share buttons -->
+         <link rel="stylesheet" type ="text/css" href="css/jssocials-theme-flat.css"> 
+
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <link rel="stylesheet" href="plugin/jquery_mlkeyboard/jquery.ml-keyboard.css">
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+
+         <!-- js to share buttons -->
+         <script src="js/jssocials.js"></script>
+         <!-- min js to share buttons --> 
+         <script src="js/jssocials.min.js"></script> 
+
+         <script>
+            function share()
+            {
+               $('#shr').modal('show')
+            } 
+           </script>
+
     </head>
 
 <body>
@@ -35,25 +56,36 @@
             <h2 class="text-center">Search By Question</h2>
             <hr>
             <div class="answer text-center align-content-center" >
-                <h6>Answer :</h6>
-                <p class="font-italic font-weight-bold"><?=$_GET["answer"]?></p>
+                <h6>Answer</h6>
+                <p class="font-italic font-weight-bold">1938 <!--<?=$_GET["answer"]?>--></p>
 
-                <a href="datasets.php?q=">Go to source of answer</a> | <a href="">Find all related sources</a>
-                <br>
-                <a href="">Copy Answer</a> | <a href="">Share Answer</a>
+                <a href="datasets.php?q=">Go to source of answer</a> | <a href="">Find all related sources</a> | <a href="">Copy Answer</a>
+                 <!--| <a href="">Share Answer</a>-->
             </div>
 
             <hr>
-            <p style="color: #666666; margin-top: 10px" class="text-center">
-                You can find answers of your questions with search by question
-            </p>
+             <!--share buttons --> 
+             <div style="margin-top: 10px" class="text-center"> 
+             <font color="red">Share the answer on: </font>
+                <div id="share">
+                    <script>
+                        $("#share").jsSocials({
+                            showLabel: false,
+                            showCount: false,
+                            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+                        });
+                    </script> 
+                </div>
+            </div>    
         </div>
     </div>
+
+   
 </main>
 
 <footer class="footer">
     <div class="container">
-        <span class="text-muted">Search By Question Team</span>
+            <span class="text-muted"><a href="https://searchbyquestion.github.io/web/">About us: Search By Question Team</a></span>
     </div>
 </footer>
 
