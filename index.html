@@ -17,14 +17,35 @@
     <link rel="stylesheet" href="plugin/jquery_mlkeyboard/jquery.ml-keyboard.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
-   
+    <!-- Spellchecker -->
     <script>
-      function search()
-     {
-        $('#req').modal('show')
-     } 
-    </script>
-
+            function check()
+            {
+                // Init the html spellchecker
+        var spellchecker = new $.SpellChecker('#text-content', {
+          lang: 'en',
+          parser: 'html',
+          webservice: {
+            path: '../webservices/php/SpellChecker.php',
+            driver: 'PSpell'
+          },
+          suggestBox: {
+            position: 'below'
+          }
+        });
+         
+        // Bind spellchecker handler functions
+        spellchecker.on('check.success', function() {
+          alert('There are no incorrectly spelt words!');
+        });
+         
+        // Check the spelling when user clicks on button
+        $("#check-spelling-button").click(function(e){
+          spellchecker.check();
+        });
+            }
+        </script>
+   
 </head>
 
 <body>
@@ -39,12 +60,31 @@
     </nav>
 </header>
 
-
 <!-- Begin page content -->
 <main role="main" class="container">
     <div style="margin-top: 200px" class="row">
         <div class="col-md-12">
             <h2 class="text-center">Search By Question</h2>
+                <div class="form-row align-items-center">
+                  <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                      <option selected>Question Term</option>
+                      <option value="1">What</option>
+                      <option value="2">Where</option>
+                      <option value="3">When</option>
+                      <option value="4">Why</option>
+                      <option value="5">Who</option>
+                      <option value="6">How</option>
+                    </select>
+                    <script>
+                        var x = document.getElementById("inlineFormCustomSelect");
+                        var option = document.getSelection("value");
+                        if(option==1)
+                        {
+                            $('#req').modal('show')
+                        }
+                    </script>
+                  </div>
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
                         <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="Type Your Question" maxlength="160"/>
@@ -52,14 +92,12 @@
                         <button id="keyforinput" class="btn btn-light">
                             <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                         </button>
-
-                        <button class="btn btn-info btn-lg" data-toggle="modal" onclick="search();" type="button">
+                        <button class="btn btn-info btn-lg" data-toggle="modal" onclick="check()" type="button">
                             <i class="fa fa-search"></i>
                         </button>
                     </span>
                 </div>
             </div>
-            <div style="margin-top: 15px" class="text-center"><button type="button" class="btn">Copy Question</button></div>
         </div>
     </div>
 </main>
@@ -83,7 +121,6 @@
           </div>
         </div>
       </div>
-
 <footer class="footer">
     <div class="container">
         <span class="text-muted"><a href="https://searchbyquestion.github.io/web/">About us: Search By Question Team</a></span>
