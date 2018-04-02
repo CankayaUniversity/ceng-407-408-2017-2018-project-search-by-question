@@ -15,36 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="plugin/jquery_mlkeyboard/jquery.ml-keyboard.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
-    <!-- Spellchecker -->
-    <script>
-            function check()
-            {
-                // Init the html spellchecker
-        var spellchecker = new $.SpellChecker('#text-content', {
-          lang: 'en',
-          parser: 'html',
-          webservice: {
-            path: '../webservices/php/SpellChecker.php',
-            driver: 'PSpell'
-          },
-          suggestBox: {
-            position: 'below'
-          }
-        });
-         
-        // Bind spellchecker handler functions
-        spellchecker.on('check.success', function() {
-          alert('There are no incorrectly spelt words!');
-        });
-         
-        // Check the spelling when user clicks on button
-        $("#check-spelling-button").click(function(e){
-          spellchecker.check();
-        });
-            }
-        </script>
+    <link href="plugin/spellchecker/src/css/jquery.spellchecker.css" rel="stylesheet" />
+
    
 </head>
 
@@ -67,23 +39,6 @@
             <h2 class="text-center">Search By Question</h2>
                 <div class="form-row align-items-center">
                   <div class="col-auto my-1">
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                      <option selected>Question Term</option>
-                      <option value="1">What</option>
-                      <option value="2">Where</option>
-                      <option value="3">When</option>
-                      <option value="4">Why</option>
-                      <option value="5">Who</option>
-                      <option value="6">How</option>
-                    </select>
-                    <script>
-                        var x = document.getElementById("inlineFormCustomSelect");
-                        var option = document.getSelection("value");
-                        if(option==1)
-                        {
-                            $('#req').modal('show')
-                        }
-                    </script>
                   </div>
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
@@ -92,48 +47,47 @@
                         <button id="keyforinput" class="btn btn-light">
                             <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                         </button>
-                        <button class="btn btn-info btn-lg" data-toggle="modal" onclick="check()" type="button">
+                        <button class="btn btn-info btn-lg"  onclick="" type="button">
                             <i class="fa fa-search"></i>
                         </button>
+                        <div id="incorrect-word-list"></div>
                     </span>
                 </div>
             </div>
         </div>
     </div>
 </main>
+<div class="Qterm">
+        <label><h6>Select a question term: </h6></label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="What">What</label> 
+        <label class="radio-inline"><input type="radio" name="optradio" value="Where">Where</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="When">When</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="Why">Why</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="Who">Who</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="How">How</label>
+        
+</div>
 
-<!-- Modal -->
-<div class="modal fade" id="req" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="req">Requirements</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Your question is not in 5W1H format.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
 <footer class="footer">
     <div class="container">
-        <span class="text-muted"><a href="https://searchbyquestion.github.io/web/">About us: Search By Question Team</a></span>
+        <span class="text-muted"><a href="https://searchbyquestion.github.io/web/" style="color: gray">About us</a></span>
     </div>
 </footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="plugin/spellchecker/src/js/libs/jquery/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+<script src="plugin/spellchecker/src/js/jquery.spellchecker.js"></script>
+<script src="plugin/spellchecker/src/js/jquery.spellchecker.min.js"></script>
+<script src="plugin/spellchecker/run.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
+
         $('input#keyboardText').mlKeyboard({
             layout: 'en_US',
             active_shift: false,
@@ -141,6 +95,13 @@
             trigger: '#keyforinput',
             is_hidden: true,
         });
+
+        $("input[name='optradio']").click(function(){
+            var val = $(this).val();
+            $("#keyboardText").val("");
+            $("#keyboardText").val(val+" ");
+        });
+
     });
 </script>
 </body>
