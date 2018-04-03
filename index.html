@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    
     <!-- Custom styles for this template -->
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="plugin/jquery_mlkeyboard/jquery.ml-keyboard.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+
+   
 </head>
 
 <body>
@@ -31,46 +31,59 @@
     </nav>
 </header>
 
-
 <!-- Begin page content -->
 <main role="main" class="container">
     <div style="margin-top: 200px" class="row">
         <div class="col-md-12">
             <h2 class="text-center">Search By Question</h2>
+                <div class="form-row align-items-center">
+                  <div class="col-auto my-1">
+                  </div>
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                        <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="When did Ataturk die ?" />
+                        <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="Type Your Question" maxlength="160"/>
                         <span class="input-group-btn">
                         <button id="keyforinput" class="btn btn-light">
                             <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                         </button>
-
-                        <button class="btn btn-info btn-lg" onclick="askquestion();" type="button">
+                        <button class="btn btn-info btn-lg"  onclick="" type="button">
                             <i class="fa fa-search"></i>
                         </button>
+                        <div id="incorrect-word-list"></div>
                     </span>
                 </div>
             </div>
-            <p style="color: #666666; margin-top: 10px" class="text-center">
-                You can find answers of your questions with search by question
-            </p>
         </div>
     </div>
 </main>
+<div class="Qterm">
+        <label><h6>Select a question term: </h6></label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="What">What</label> 
+        <label class="radio-inline"><input type="radio" name="optradio" value="Where">Where</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="When">When</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="Why">Why</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="Who">Who</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="How">How</label>
+        
+</div>
 
 <footer class="footer">
     <div class="container">
-        <span class="text-muted">Search By Question Team</span>
+        <span class="text-muted"><a href="https://searchbyquestion.github.io/web/" style="color: gray">About us</a></span>
     </div>
 </footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
+
         $('input#keyboardText').mlKeyboard({
             layout: 'en_US',
             active_shift: false,
@@ -78,6 +91,13 @@
             trigger: '#keyforinput',
             is_hidden: true,
         });
+
+        $("input[name='optradio']").click(function(){
+            var val = $(this).val();
+            $("#keyboardText").val("");
+            $("#keyboardText").val(val+" ");
+        });
+
     });
 </script>
 </body>
