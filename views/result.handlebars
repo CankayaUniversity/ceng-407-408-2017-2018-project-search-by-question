@@ -1,0 +1,32 @@
+<!-- Begin page content -->
+<main role="main" class="container">
+    <div style="margin-top: 200px" class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Search By Question</h2>
+            <hr>
+            <div class="answer text-center align-content-center" >
+                <h6>Answer</h6>
+                <p class="font-italic font-weight-bold"><i>{{quest}}</i> : {{ans}}</p>
+
+                <a href="datasets.php?q=">Go to source of answer</a> | <a href="">Find all related sources</a> | <a href="">Copy Answer</a>
+            </div>
+
+            <hr>
+             <!--share buttons --> 
+             <div style="margin-top: 10px" class="text-center"> 
+             <font color="red">Share the answer on: </font>
+                <div id="share">
+                    <script>
+                        $("#share").jsSocials({
+                            showLabel: false,
+                            showCount: false,
+                            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+                        });
+                    </script> 
+                </div>
+            </div>    
+        </div>
+    </div>
+
+   
+</main>

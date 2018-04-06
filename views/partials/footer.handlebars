@@ -1,0 +1,35 @@
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted"><a href="https://searchbyquestion.github.io/web/" style="color: gray">About us</a></span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('input#keyboardText').mlKeyboard({
+            layout: 'en_US',
+            active_shift: false,
+            active_caps: false,
+            trigger: '#keyforinput',
+            is_hidden: true,
+        });
+
+        $("input[name='optradio']").click(function(){
+            var val = $(this).val();
+            $("#keyboardText").val("");
+            $("#keyboardText").val(val+" ");
+        });
+
+    });
+</script>
+</body>
+</html>
