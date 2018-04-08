@@ -1,3 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+         <!-- css to share buttons -->
+         <link rel="stylesheet" type="text/css" href="css/jssocials.css">  
+         <!-- min css to share buttons -->
+         <link rel="stylesheet" type ="text/css" href="css/jssocials-theme-flat.css"> 
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+         <!-- js to share buttons -->
+         <script src="js/jssocials.js"></script>
+         <!-- min js to share buttons --> 
+         <script src="js/jssocials.min.js"></script> 
+
+    </head>
+
+<body>
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="#">&nbsp;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</header>
+
 <!-- Begin page content -->
 <main role="main" class="container">
     <div style="margin-top: 200px" class="row">
@@ -6,7 +40,7 @@
             <hr>
             <div class="answer text-center align-content-center" >
                 <h6>Answer</h6>
-                <p class="font-italic font-weight-bold"><i>{{quest}}</i> : {{ans}}</p>
+                <p class="font-italic font-weight-bold">{{sugs}}</p>
 
                 <a href="datasets.php?q=">Go to source of answer</a> | <a href="">Find all related sources</a> | <a href="">Copy Answer</a>
             </div>
@@ -20,7 +54,7 @@
                         $("#share").jsSocials({
                             showLabel: false,
                             showCount: false,
-                            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+                            shares: ["email", "twitter", "facebook", "linkedin"]
                         });
                     </script> 
                 </div>

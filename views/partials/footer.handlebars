@@ -14,6 +14,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var count = 0;
 
         $('input#keyboardText').mlKeyboard({
             layout: 'en_US',
@@ -25,9 +26,59 @@
 
         $("input[name='optradio']").click(function(){
             var val = $(this).val();
-            $("#keyboardText").val("");
-            $("#keyboardText").val(val+" ");
+
+            if(count){
+                var parts = $("#keyboardText").val().trim().split(" ");
+
+                $("#keyboardText").val(val+" ");
+            }else{
+
+                $("#keyboardText").val(val+" "+ $("#keyboardText").val());    
+            }
+
+            count = 1;
+            suggest();
         });
+
+        if($("#keyboardText").length > 0){
+            $("#keyboardText").bind("keypress", suggest);
+
+            function suggest(e){
+                if($("#keyboardText").val().trim().length > 1){
+                    var allSuggs = [];
+                    var words = $("#keyboardText").val().trim().split(" ");
+                    $.each(words, function( index, value ){
+                        $.ajax({url: "/suggestions", data: {"word": value}, success: function(result){
+                            allSuggs.push(result);
+                            if(index == words.length - 1){
+                                $("#suggestions").html("");
+                                for(i = 0; i < 5; i++){
+                                    var kelime = "";
+                                    var link = "";
+                                    for(j = 0; j <= words.length - 1; j ++){
+                                        kelime = kelime + " " + allSuggs[j][i];
+                                    }
+                                    kelime = kelime.trim();
+                                    if(kelime.search("undefined") < 0){
+                                        $("#suggestions").append('<li><a href="/result?soru='+kelime+'">'+kelime+'</a><li>');
+                                    }
+                                }
+                                $("#suggestions a").click(sendToInput);
+                            }
+                        }});
+                    });
+                }else{
+                    count = 0;
+                    $("#suggestions").html("");
+                }
+            }
+
+            function sendToInput(e){
+                e.preventDefault();
+                $("#keyboardText").val($(this).text());
+                return false;
+            }
+        }
 
     });
 </script>

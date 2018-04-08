@@ -45,6 +45,15 @@
 .Qterm {
 
     text-align: center;
-    margin-top:20px;
+    margin:20px;
+    color: black;
     
   }
+
+  #suggestions a{
+    margin:10px;
+  }
+
+   #suggestions{
+    list-style-type: none;
+   }
