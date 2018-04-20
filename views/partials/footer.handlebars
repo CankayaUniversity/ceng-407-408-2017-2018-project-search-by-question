@@ -16,15 +16,20 @@
     $(document).ready(function () {
         var count = 0;
 
-        $('input#keyboardText').mlKeyboard({
+        $( "#keyboardText" ).prop( "disabled", true );
+
+        $('[data-toggle="tooltip"]').tooltip();  
+
+        $('i#virtual').mlKeyboard({
             layout: 'en_US',
             active_shift: false,
             active_caps: false,
             trigger: '#keyforinput',
             is_hidden: true,
         });
-
+        
         $("input[name='optradio']").click(function(){
+            $( "#keyboardText" ).prop( "disabled", false );
             var val = $(this).val();
 
             if(count){
