@@ -2,34 +2,38 @@
 <main role="main" class="container">
     <div style="margin-top: 200px" class="row">
         <div class="col-md-12">
-            <h2 class="text-center">Search By Question</h2>
+            <h3 class="text-center">Search By Question</h3>
                 <div class="form-row align-items-center">
                   <div class="col-auto my-1">
                   </div>
-            <div id="custom-search-input">
+            <div id="custom-search-input" data-toggle="tooltip" title="Please select a question term!">
                     <div class="input-group col-md-12">
-                            <input type="text" id="keyboardText" name="question" class="form-control input-lg" placeholder="Type Your Question" maxlength="160"/>
+                            <input type="text" id="keyboardText"  name="question" class="form-control input-lg" placeholder="Type Your Question" maxlength="160" style="background-color: unset"/>
                             <span class="input-group-btn">
                             <button id="keyforinput" class="btn btn-light">
                                 <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                             </button>
                             <button class="btn btn-info btn-lg"  onclick="" type="button">
-                                <i class="fa fa-search"></i>
+                                <i id="virtual" name="v" class="fa fa-search"></i>
                             </button>
-                            <div id="incorrect-word-list"></div>
                         </span>
                     </div>   
             </div>
         </div>
     </div>
 </main>
+<br/>
+<div id="custom-search-input">
 <div class="Qterm">
-    <label><h6>Select a question term: </h6></label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="What">What</label> 
-    <label class="radio-inline"><input type="radio" name="optradio" value="Where">Where</label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="When">When</label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="Why">Why</label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="Who">Who</label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="How">How</label>
-    
+    <ul><label><h5>Select a question term: </h5></label></ul>
+    <label class="radio-inline"><input type="radio" name="optradio" value="What" style="margin: 3px">What</label> 
+    <label class="radio-inline"><input type="radio" name="optradio" value="Where" style="margin: 3px">Where</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="When" style="margin: 3px">When</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="Why" style="margin: 3px">Why</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="Who" style="margin: 3px">Who</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="How" style="margin: 3px">How</label>
+    <p><h5>Alternative Posibilities:</h5></p>
+    <ul id="suggestions"></ul>
 </div>
+</div>
+</body>

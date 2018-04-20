@@ -4,6 +4,20 @@ var app = express();
 
 app.disable('x-powered-by');
 
+var mDict;
+
+// Spellchecker
+var sc = require('simple-spellchecker');
+sc.getDictionary("en-US", "./node_modules/simple-spellchecker/dict",function(err, dictionary) {
+    if(!err) {
+        mDict = dictionary;
+    }else{
+    	console.log("dictionary Error: " + err);
+    }
+}); 
+
+console.log(mDict);
+
 var handlebars = require('express-handlebars').create({defaultLayout:'main'})
 
 app.engine('handlebars', handlebars.engine);
@@ -27,6 +41,16 @@ app.get('/result', function(req, res){
 	var cevap = "Answer of the Question";
 
 	res.render('result', {quest: soru, ans: cevap});
+});
+
+
+app.get('/suggestions', function(req, res){
+
+	var word = req.query.word;
+
+	var suggestions = mDict.getSuggestions(word);
+
+	res.send(suggestions);
 });
 
 app.get('/about', function(req, res){
