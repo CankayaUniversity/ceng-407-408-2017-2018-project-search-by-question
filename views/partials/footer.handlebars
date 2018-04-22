@@ -1,6 +1,7 @@
 <footer class="footer">
     <div class="container">
-        <span class="text-muted"><a href="https://searchbyquestion.github.io/web/" style="color: gray">About us</a></span>
+        <span class="text-muted"><a href="https://searchbyquestion.github.io/web/"
+                                    style="color: gray">About us</a></span>
     </div>
 </footer>
 
@@ -8,84 +9,14 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="plugin/jquery_mlkeyboard/jquery.ml-keyboard.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var count = 0;
+<script src="js/custom.js" type="text/javascript">
 
-        $( "#keyboardText" ).prop( "disabled", true );
-
-        $('[data-toggle="tooltip"]').tooltip();  
-
-        $('i#virtual').mlKeyboard({
-            layout: 'en_US',
-            active_shift: false,
-            active_caps: false,
-            trigger: '#keyforinput',
-            is_hidden: true,
-        });
-        
-        $("input[name='optradio']").click(function(){
-            $( "#keyboardText" ).prop( "disabled", false );
-            var val = $(this).val();
-
-            if(count){
-                var parts = $("#keyboardText").val().trim().split(" ");
-
-                $("#keyboardText").val(val+" ");
-            }else{
-
-                $("#keyboardText").val(val+" "+ $("#keyboardText").val());    
-            }
-
-            count = 1;
-            suggest();
-        });
-
-        if($("#keyboardText").length > 0){
-            $("#keyboardText").bind("keypress", suggest);
-
-            function suggest(e){
-                if($("#keyboardText").val().trim().length > 1){
-                    var allSuggs = [];
-                    var words = $("#keyboardText").val().trim().split(" ");
-                    $.each(words, function( index, value ){
-                        $.ajax({url: "/suggestions", data: {"word": value}, success: function(result){
-                            allSuggs.push(result);
-                            if(index == words.length - 1){
-                                $("#suggestions").html("");
-                                for(i = 0; i < 5; i++){
-                                    var kelime = "";
-                                    var link = "";
-                                    for(j = 0; j <= words.length - 1; j ++){
-                                        kelime = kelime + " " + allSuggs[j][i];
-                                    }
-                                    kelime = kelime.trim();
-                                    if(kelime.search("undefined") < 0){
-                                        $("#suggestions").append('<li><a href="/result?soru='+kelime+'">'+kelime+'</a><li>');
-                                    }
-                                }
-                                $("#suggestions a").click(sendToInput);
-                            }
-                        }});
-                    });
-                }else{
-                    count = 0;
-                    $("#suggestions").html("");
-                }
-            }
-
-            function sendToInput(e){
-                e.preventDefault();
-                $("#keyboardText").val($(this).text());
-                return false;
-            }
-        }
-
-    });
 </script>
 </body>
 </html>

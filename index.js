@@ -23,7 +23,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'})
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-app.set('port', process.env.PORT || 1234);
+app.set('port', process.env.PORT || 8888);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -64,5 +64,5 @@ app.use(function(req, res){
 });
 
 app.listen(app.get('port'), function(){
-	console.log('Express başladı.');
+	console.log('Node server started	.');
 });
