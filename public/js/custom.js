@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     /*
             $('#keyboardText').mlKeyboard({
                 layout: 'en_US',
@@ -10,17 +11,17 @@ $(document).ready(function () {
     */
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("#keyboardText").prop("disabled",true);
+    $("#keyboardText").prop("disabled", true);
 
     $("input[name='optradio']").click(function () {
 
         $("#keyboardText").prop("disabled", false);
         var val = $(this).val();
 
-        var textval = $("#keyboardText").val();
+        var textval = $("#keyboardText").val().trim();
 
-        $("#keyboardText").val(" ");
-        $("#keyboardText").val(val + " " + $("#keyboardText").val());
+        $("#keyboardText").val("");
+        $("#keyboardText").val(val + " " + $("#keyboardText").val().trim());
 
         if (textval.trim() != null) {
             suggest();
@@ -70,4 +71,70 @@ $(document).ready(function () {
         }
     }
 
+
 });
+
+function checkIsQuestion(query) {
+    var status = false;
+    var question = query.trim().split(" ");
+    var qlen = question.length;
+    var questions = ["WHAT","WHERE","WHICH","WHY","WHO","HOW"];
+    var i = 0; var k;
+    while(i<questions.length){
+        for(k=0;k<question.length;k++){
+            if(questions[i] == question[k]){
+                status = true;
+            }
+        }
+        i++;
+    }
+
+    return status;
+}
+
+function openModal(title,body) {
+    $(".modal-body").html("");
+    $("#modalLabel").html("");
+
+    $(".modal-body").html(body);
+    $("#modalLabel").html(title);
+    $("#Modal").modal();
+
+}
+
+function sendQuestion() {
+
+    var text = $("#keyboardText").val().trim();
+    text = text.toUpperCase();
+
+    if (text != "") {
+
+        if(checkIsQuestion(text) === true){
+
+            var data = {
+                question : text,
+                token : params.token
+            };
+
+            var dataString = "data="+encodeURIComponent(JSON.stringify(data));
+
+
+            $.ajax({
+                type: "post",
+                dataType: 'json',
+                url: params.site + "test-tools/nlu-connection-tool/test_nlu_model.php",
+                data: dataString,
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }else{
+            openModal("Warning","Please choose a question type!");
+        }
+
+    } else {
+        openModal("Warning","Please enter a question!");
+    }
+
+
+}
