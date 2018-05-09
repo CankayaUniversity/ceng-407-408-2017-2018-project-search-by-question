@@ -11,9 +11,9 @@ class NaturalLanguageUnderstanding
 
     public function __construct()
     {
-        $this->username = "76261f9c-c0c9-4be8-a0a6-1e5a4723d04d";
-        $this->password = "NdVnDDvtuDry";
-        $this->modelID = "10:bb72e6f4-18a8-4d4e-8f9f-c08d467428e1";
+        $this->username = "e789bb79-bec8-4619-a3ec-6eafc8474244";
+        $this->password = "UHI6LC0QGDv6";
+        $this->modelID = "10:250fdc5d-a8a1-44ef-86e2-68266ba25855";
     }
 
     public function analyzeGet($input)

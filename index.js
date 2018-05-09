@@ -23,7 +23,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'})
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-app.set('port', process.env.PORT || 8888);
+app.set('port', process.env.PORT || 8884);
 
 app.use(express.static(__dirname + '/public'));
 

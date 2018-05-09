@@ -105,11 +105,11 @@ function openModal(title,body) {
 function sendQuestion() {
 
     var text = $("#keyboardText").val().trim();
-    text = text.toUpperCase();
+    text1 = text.toUpperCase();
 
     if (text != "") {
 
-        if(checkIsQuestion(text) === true){
+        if(checkIsQuestion(text1) === true){
 
             var data = {
                 question : text,
