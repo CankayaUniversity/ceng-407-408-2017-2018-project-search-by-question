@@ -64,5 +64,5 @@ app.use(function(req, res){
 });
 
 app.listen(app.get('port'), function(){
-	console.log('Node server started.');
+	console.log('Node server started at port 8884.\nServer: http://localhost:8884/');
 });

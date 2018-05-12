@@ -13,7 +13,7 @@
     
     <div class="container">
         <div class="row">
-            <form style="width: 100%" action="test_nlu_model.php" method="POST">
+            <form style="width: 100%" action="test_nlu_model_untoken.php" method="POST">
                 <div class="form-group">
                   <label for="">Model ID:</label>
                   <input style="width: 100%" type="text" name="modelid" class="form-control" id="modelid">
@@ -23,7 +23,7 @@
                   <textarea style="width: 100%; height: 500px;" name="text" class="form-control" id="text"></textarea>
                 </div>
             
-                <button type="submit" class="btn btn-default">Submit</button>
+                <input type="submit" name="data" class="btn btn-default" value="Submit">
               </form> 
         </div>
     </div>

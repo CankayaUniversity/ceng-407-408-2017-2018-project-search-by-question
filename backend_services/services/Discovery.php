@@ -9,11 +9,23 @@
 Class Discovery {
     private $username;
     private $password;
+    private $collectionID;
+    private $invID;
+    private $confid;
+    private $documentID;
+
+
     const BASE_URL = "https://gateway.watsonplatform.net/discovery/api/v1/environments";
 
     function __construct() {
-        $this->username = "";
-        $this->password = "";
+        $this->username = "9295560c-bbcf-4475-97f4-691fe576d313";
+        $this->password = "1qqyDYOumQHv";
+        $this->collectionID = "afaa2ec9-beef-408e-ad09-7e3d44616fed";
+        $this->confid = "602f5e9f-aa99-44c2-8ef5-cdcb4e92b450";
+        $this->invID = "ea7e6af5-2dcd-4da8-b9c2-4bcc20950534";
+        $this->documentID = "982df4f69f46be1577703d3d7856596c";
+
+
     }
 
 
@@ -66,10 +78,10 @@ Class Discovery {
     }
 
 
-    public function getEnvironment($environmentId) {
+    public function getEnvironment() {
 
         $url = self::BASE_URL . "/{environment_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -89,10 +101,10 @@ Class Discovery {
     }
 
 
-    public function updateEnvironment($environmentId, $environmentName, $environmentDesc, $size) {
+    public function updateEnvironment($environmentName, $environmentDesc, $size) {
 
         $url = self::BASE_URL . "/{environment_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $data["name"] = $environmentName;
         $data["description"] = $environmentDesc;
@@ -117,10 +129,10 @@ Class Discovery {
     }
 
 
-    public function deleteEnvironment($environmentId) {
+    public function deleteEnvironment() {
 
         $url = self::BASE_URL . "/{environment_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -140,10 +152,10 @@ Class Discovery {
     }
 
 
-    public function createConfiguration($environmentId, $configurationName) {
+    public function createConfiguration($configurationName) {
 
         $url = self::BASE_URL . "/{environment_id}/configurations?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $data["name"] = $configurationName;
 
@@ -166,10 +178,10 @@ Class Discovery {
     }
 
 
-    public function getConfigurations($environmentId) {
+    public function getConfigurations() {
 
         $url = self::BASE_URL . "/{environment_id}/configurations?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -189,11 +201,11 @@ Class Discovery {
     }
 
 
-    public function getConfiguration($environmentId, $configurationId) {
+    public function getConfiguration() {
 
         $url = self::BASE_URL . "/{environment_id}/configurations/{configuration_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{configuration_id}", $configurationId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{configuration_id}", $this->confid, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -213,11 +225,11 @@ Class Discovery {
     }
 
 
-    public function updateConfiguration($environmentId, $configurationId, $configurationName) {
+    public function updateConfiguration($configurationName) {
 
         $url = self::BASE_URL . "/{environment_id}/configurations/{configuration_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{configuration_id}", $configurationId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{configuration_id}", $this->confid, $url);
 
         $data["name"] = $configurationName;
 
@@ -240,11 +252,11 @@ Class Discovery {
     }
 
 
-    public function deleteConfiguration($environmentId, $configurationId) {
+    public function deleteConfiguration() {
 
         $url = self::BASE_URL . "/{environment_id}/configurations/{configuration_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{configuration_id}", $configurationId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{configuration_id}", $this->confid, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -264,14 +276,14 @@ Class Discovery {
     }
 
 
-    public function createCollection($environmentId, $collectionName, $collectionDesc, $configurationId) {
+    public function createCollection($collectionName, $collectionDesc) {
 
         $url = self::BASE_URL . "/{environment_id}/collections?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $data["name"] = $collectionName;
         $data["description"] = $collectionDesc;
-        $data["configuration_id"] = $configurationId;
+        $data["configuration_id"] = $this->confid;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -292,10 +304,10 @@ Class Discovery {
     }
 
 
-    public function getCollections($environmentId) {
+    public function getCollections() {
 
         $url = self::BASE_URL . "/{environment_id}/collections?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -315,11 +327,11 @@ Class Discovery {
     }
 
 
-    public function getCollection($environmentId, $collectionId) {
+    public function getCollection() {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -339,11 +351,11 @@ Class Discovery {
     }
 
 
-    public function updateCollection($environmentId, $collectionId, $collectionName, $collectionDesc, $configurationId) {
+    public function updateCollection( $collectionName, $collectionDesc, $configurationId) {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
 
         $data["name"] = $collectionName;
         $data["description"] = $collectionDesc;
@@ -368,11 +380,11 @@ Class Discovery {
     }
 
 
-    public function getCollectionFields($environmentId, $collectionId) {
+    public function getCollectionFields() {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/fields?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -392,11 +404,11 @@ Class Discovery {
     }
 
 
-    public function deleteCollection($environmentId, $collectionId) {
+    public function deleteCollection() {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -414,12 +426,12 @@ Class Discovery {
 
         return $result;
     }
-
-    public function createDocument($environmentId, $collectionId, $documentUrl) {
+/*
+    public function createDocument($documentUrl) {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/documents?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
 
         $data["file"] = $documentUrl;
 
@@ -445,8 +457,8 @@ Class Discovery {
     public function updateDocument($environmentId, $collectionId, $documentId, $documentUrl) {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/documents/{document_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
         $url = str_replace("{document_id}", $documentId, $url);
 
         $data["file"] = $documentUrl;
@@ -468,14 +480,15 @@ Class Discovery {
 
         return $result;
     }
+*/
 
 
-    public function getDocument($environmentId, $collectionId, $documentId) {
+    public function getDocument() {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/documents/{document_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
-        $url = str_replace("{document_id}", $documentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
+        $url = str_replace("{document_id}", $this->documentID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -495,12 +508,12 @@ Class Discovery {
     }
 
 
-    public function deleteDocument($environmentId, $collectionId, $documentId) {
+    public function deleteDocument() {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/documents/{document_id}?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
-        $url = str_replace("{document_id}", $documentId, $url);
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
+        $url = str_replace("{document_id}", $this->documentID, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -520,19 +533,20 @@ Class Discovery {
     }
 
 
-    public function query($environmentId, $collectionId, $keywords, $count, $filter, $return) {
+    public function query($keywords) {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/query?version=2016-12-01";
-        $url = str_replace("{environment_id}", $environmentId, $url);
-        $url = str_replace("{collection_id}", $collectionId, $url);
-
-        $data["query"] = $keywords;
-        $data["count"] = $count;
-        $data["filter"] = $filter;
-        $data["return"] = $return;
-
-        $url = $url . "&query=" . $data["query"] . "&count=" . $data["count"] . "&filter=" . $data["filter"] . "&return=" . $data["return"];
-
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
+        $url = $url . "&natural_language_query={natural_language_query}&passages={passages}&count={count}&passages.count={passages_count}&return={return}&passages.characters={passages_characters}";
+        $url = str_replace("{environment_id}", $this->invID, $url);
+        $url = str_replace("{collection_id}", $this->collectionID, $url);
+        $url = str_replace("{natural_language_query}", urlencode(trim($keywords)), $url);
+        $url = str_replace("{passages}", "true", $url);
+        $url = str_replace("{count}", 5, $url);
+        $url = str_replace("{passages_count}", 10, $url);
+        $url = str_replace("{return}", urlencode("title,enrichedTitle.text,url,host,blekko.chrondate"), $url);
+        $url = str_replace("{passages_characters}", 2000, $url);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array (
@@ -550,6 +564,7 @@ Class Discovery {
         return $result;
 
     }
+
 }
 ?>
 

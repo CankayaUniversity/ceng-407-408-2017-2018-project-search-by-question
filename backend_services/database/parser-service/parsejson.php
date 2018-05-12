@@ -7,10 +7,10 @@
  */
 
 //incude database
-require dirname(__DIR__)."/database-connection/database.php";
+require dirname(__DIR__) . "/database-connection/database.php";
 
 //reach datas in the json
-$file = file_get_contents(dirname(__DIR__)."/sample-datas/dev-v1.1.json");
+$file = file_get_contents(dirname(dirname(__DIR__)) . "/sample-datas/dev-v1.1.json");
 
 //decode json file
 $json = json_decode($file);
