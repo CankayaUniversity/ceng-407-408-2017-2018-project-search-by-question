@@ -32,15 +32,15 @@ app.get('/', function(req, res){
 });
 
 app.get('/datasets', function(req, res){
-	res.render('datasets');
+	res.render('datasets',{layout: 'dtsets'});
+});
+app.get('/dataset', function(req, res){
+	res.render('dataset',{layout: 'dtset'});
 });
 
 app.get('/result', function(req, res){
-	var soru = req.query.question;
 
-	var cevap = "Answer of the Question";
-
-	res.render('result', {quest: soru, ans: cevap});
+	res.render('result', {layout: 'res'});
 });
 
 

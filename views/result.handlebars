@@ -32,6 +32,12 @@
     </nav>
 </header>
 
+<div class="loadergif">
+    <div style="position: relative;left:-50%; margin-top: 200px;">
+        <img style="border-radius: 30px; width: 250px; height: 140px;" src="images/loading.gif" alt="">
+    </div>
+</div>
+
 <!-- Begin page content -->
 <main role="main" class="container">
     <div style="margin-top: 200px" class="row">
@@ -39,10 +45,12 @@
             <h2 class="text-center">Search By Question</h2>
             <hr>
             <div class="answer text-center align-content-center" >
-                <h6>Answer</h6>
-                <p class="font-italic font-weight-bold">{{sugs}}</p>
+                <h5 style="text-decoration: underline">Question</h5>
+                <p id="question"></p>
+                <h6 style="text-decoration: underline">Answer</h6>
+                <p id="answer" class="font-italic font-weight-bold"></p>
 
-                <a href="datasets.php?q=">Go to source of answer</a> | <a href="">Find all related sources</a> | <a href="">Copy Answer</a>
+                <a href="javascript:gotoDocument()">Go to source of answer</a> | <a href="javascript:gotoAllDocuments()" >Find all related sources</a> | <a href="">Copy Answer</a>
             </div>
 
             <hr>
@@ -56,7 +64,8 @@
                             showCount: false,
                             shares: ["email", "twitter", "facebook", "linkedin"]
                         });
-                    </script> 
+                    </script>
+
                 </div>
             </div>    
         </div>

@@ -39,8 +39,9 @@ function sendQuestion() {
                 url: params.site + "controllers/ProcessController.php",
                 data: dataString,
                 success: function (data) {
+
                     $(".loadergif").hide("slow");
-                    console.log(data);
+                    window.location.href = params.mainUrl+"result?id="+data.id;
 
                 }
             });
@@ -54,3 +55,7 @@ function sendQuestion() {
 
 
 }
+
+
+
+
