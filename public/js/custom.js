@@ -1,19 +1,27 @@
 $(document).ready(function () {
 
-    /*
-            $('#keyboardText').mlKeyboard({
+    var tooltip = true;
+
+
+     $('#keyboardText').mlKeyboard({
                 layout: 'en_US',
                 active_shift: true,
-                active_caps: false,
-                trigger: '#keyforinput',
+                active_caps: false,            
                 is_hidden: true,
+                trigger: '#keyforinput'
             });
-    */
+
     $('[data-toggle="tooltip"]').tooltip();
 
     $("#keyboardText").prop("disabled", true);
 
+    $("#keyforinput").prop("disabled", true);
+
     $("input[name='optradio']").click(function () {
+
+        $('[data-toggle="tooltip"]').tooltip('disable');
+
+        $("#keyforinput").prop("disabled", false);
 
         $("#keyboardText").prop("disabled", false);
         var val = $(this).val();
@@ -71,9 +79,8 @@ $(document).ready(function () {
         }
     }
 
-
 });
-
+//modal
 function openModal(title,body) {
     $(".modal-body").html("");
     $("#modalLabel").html("");
