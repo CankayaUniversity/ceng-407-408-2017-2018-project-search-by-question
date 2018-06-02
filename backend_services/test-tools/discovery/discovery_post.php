@@ -10,6 +10,7 @@ header("Access-Control-Allow-Origin: *");
 
 require dirname(dirname(__DIR__)) . "/services/Discovery.php";
 require dirname(dirname(__DIR__)) . "/services/NaturalLanguageUnderstanding.php";
+require dirname(dirname(__DIR__)) . "/services/NaturalLanguageClassifier.php";
 require dirname(dirname(__DIR__)) . "/controllers/Functions.php";
 
 $f = new Functions();
@@ -19,8 +20,9 @@ print_r($topic);
 
 $discovery = new Discovery();
 $NLU = new NaturalLanguageUnderstanding();
-
-
+$classify = new NaturalLanguageClassifier();
+print_r($classify->getClassifiers());
+die();
 $res = $discovery->query($topic["focus"]);
 
 echo "<pre>";
