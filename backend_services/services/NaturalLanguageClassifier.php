@@ -17,7 +17,7 @@ class NaturalLanguageClassifier {
     function __construct() {
         $this->username = "5ba6e4c3-a84f-4e12-86d2-30c4f7884676";
         $this->password = "YOaxNxdgal7r";
-        $this->classifyID = "95ca59x409-nlc-413";
+        $this->classifyID = "bc5490x411-nlc-54";
     }
 
     function createClassifier($filename) {
@@ -68,10 +68,10 @@ class NaturalLanguageClassifier {
 
     }
 
-    function getClassifier($classifierId) {
+    function getClassifier() {
 
         $url = self::BASE_URL . "/classifiers";
-        $url = $url."/".$classifierId;
+        $url = $url."/".$this->classifyID;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

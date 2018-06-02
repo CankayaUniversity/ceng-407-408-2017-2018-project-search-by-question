@@ -19,8 +19,11 @@ class Functions
             "DIE", "BORN", "DIED"
         ),
         "WHAT" => array(
-            "BORN", "YEAR", "MONTH", "DAY"
+            "BORN", "YEAR", "MONTH", "DAY", "WON", "LOST","LOSE","CURRENCY","NATIONALITY","ETHNICITY","COLOR"
         ),
+        "WHERE" => array(
+            "DIE", "BORN", "DIED","WON", "LOST","LOSE"
+        )
     ];
 
     public $ToBe = array("?", "IS", "ARE", "WAS", "WERE", "IN");
@@ -63,7 +66,6 @@ class Functions
                     foreach ($this->actions[$val] as $action => $aval) {
                         if (in_array($aval, $expQuestion)) {
                             $res["action"] = $aval;
-                            $strUp = str_replace($aval, " ", $strUp);
                             $i++;
                         }
 
@@ -179,11 +181,14 @@ class Functions
         return $res;
     }
 
-    public function analyzSementicRoles($input){
-
-        return $input->semantic_roles[0]->object->text;
-
+    public function cleanPh($text){
+        $text = str_replace("]","",$text);
+        $text = str_replace("[","",$text);
+        $text = str_replace("(","",$text);
+        $text = str_replace(")","",$text);
+        return $text;
     }
+
 
     public function checkOldQuestions($question){
 
@@ -193,7 +198,7 @@ class Functions
         $res["status"] = 0;
 
         foreach ($arr as $key => $val){
-            if(trim($val->datas->question) == trim($question)){
+            if(trim(strtoupper($val->datas->question)) == trim(strtoupper($question))){
                 $res["qid"] = $val->id;
                 $res["status"] = 1;
             }
@@ -201,5 +206,24 @@ class Functions
 
 
         return $res;
+    }
+
+    public function printr($arr){
+        echo "<pre>";
+        print_r($arr);
+        echo "</pre>";
+    }
+
+    public function searchAction($arr,$text){
+        $exp = explode(" ",$arr);
+        $exp = array_map("strtoupper",$exp);
+        $status = 0;
+        if(in_array(strtoupper($text),$exp)){
+            $status = 1;
+        }
+
+        return $status;
+
+
     }
 }

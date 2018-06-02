@@ -544,8 +544,8 @@ Class Discovery {
         $url = str_replace("{natural_language_query}", urlencode(trim($keywords)), $url);
         $url = str_replace("{passages}", "true", $url);
         $url = str_replace("{count}", 5, $url);
-        $url = str_replace("{passages_count}", 10, $url);
-        $url = str_replace("{return}", urlencode("html"), $url);
+        $url = str_replace("{passages_count}", 5, $url);
+        $url = str_replace("{return}", "text", $url);
         $url = str_replace("{passages_characters}", 2000, $url);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
