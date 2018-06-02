@@ -2,14 +2,22 @@ $(document).ready(function () {
 
     var tooltip = true;
 
+<<<<<<< HEAD
 
+=======
+     $('#keyboardText').mlKeyboard({
+>>>>>>> 5744597e5268bc8a0ca8b4a8f4944e1b0c7fa8bf
      $('#keyboardText').mlKeyboard({
                 layout: 'en_US',
                 active_shift: true,
                 active_caps: false,            
                 is_hidden: true,
                 trigger: '#keyforinput'
+        });
+<<<<<<< HEAD
+=======
             });
+>>>>>>> 5744597e5268bc8a0ca8b4a8f4944e1b0c7fa8bf
 
     $('[data-toggle="tooltip"]').tooltip();
 

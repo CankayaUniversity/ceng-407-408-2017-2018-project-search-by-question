@@ -58,7 +58,8 @@
                 if (data.status === 1) {
                     $(".loadergif").hide("slow");
                     $.each(data.datas, function (key, val) {
-                        $("#answers").append("<article class=\"search-result row\"> <div class=\"col-xs-12 col-sm-12 col-md-12 excerpet\"> <p> "+ val +" </p><span class=\"plus\"><a href=\"#\" title=\"Lorem ipsum\"><i class=\"glyphicon glyphicon-plus\"></i></a></span> </div><span class=\"clearfix borda\"></span> </article><hr>")
+                        var str = val;
+                        $("#answers").append("<article class=\"search-result row\"> <div class=\"col-xs-12 col-sm-12 col-md-12 excerpet\"> <p> "+ str.replace("Tesla","<span style=\"background:green;color:white;padding:0px 5px;\">Tesla</span>") +" </p><span class=\"plus\"><a href=\"#\" title=\"Lorem ipsum\"><i class=\"glyphicon glyphicon-plus\"></i></a></span> </div><span class=\"clearfix borda\"></span> </article><hr>")
                         i++;
                     });
                     $("#document_count").html(i);

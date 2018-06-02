@@ -57,7 +57,8 @@
 
                 if(data.status === 1){
                     $(".loadergif").hide("slow");
-                    $("#ans").html(data.target);
+                    var str = data.target;
+                    $("#ans").html(str.replace("Tesla","<span style=\"background:green;color:white;padding:0px 5px;\">Tesla</span>"));
                     $("#qarea").html(data.question);
                 }
 
