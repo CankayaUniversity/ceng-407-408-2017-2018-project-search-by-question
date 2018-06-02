@@ -20,7 +20,7 @@ Class Discovery {
     function __construct() {
         $this->username = "9295560c-bbcf-4475-97f4-691fe576d313";
         $this->password = "1qqyDYOumQHv";
-        $this->collectionID = "afaa2ec9-beef-408e-ad09-7e3d44616fed";
+        $this->collectionID = "4c4e0be2-a655-4c99-b8db-6f0ba29cd321";
         $this->confid = "602f5e9f-aa99-44c2-8ef5-cdcb4e92b450";
         $this->invID = "ea7e6af5-2dcd-4da8-b9c2-4bcc20950534";
         $this->documentID = "982df4f69f46be1577703d3d7856596c";
@@ -483,12 +483,12 @@ Class Discovery {
 */
 
 
-    public function getDocument() {
+    public function getDocument($docid) {
 
         $url = self::BASE_URL . "/{environment_id}/collections/{collection_id}/documents/{document_id}?version=2016-12-01";
         $url = str_replace("{environment_id}", $this->invID, $url);
         $url = str_replace("{collection_id}", $this->collectionID, $url);
-        $url = str_replace("{document_id}", $this->documentID, $url);
+        $url = str_replace("{document_id}", $docid, $url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -545,7 +545,7 @@ Class Discovery {
         $url = str_replace("{passages}", "true", $url);
         $url = str_replace("{count}", 5, $url);
         $url = str_replace("{passages_count}", 10, $url);
-        $url = str_replace("{return}", urlencode("title,enrichedTitle.text,url,host,blekko.chrondate"), $url);
+        $url = str_replace("{return}", urlencode("html"), $url);
         $url = str_replace("{passages_characters}", 2000, $url);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

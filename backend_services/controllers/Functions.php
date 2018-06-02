@@ -97,6 +97,56 @@ class Functions
         return $status;
     }
 
+    public function sksort(&$array, $subkey, $sort_ascending=false) {
+        $temp_array = null;
+        if (count($array))
+            $temp_array[key($array)] = array_shift($array);
+
+        foreach($array as $key => $val){
+            $offset = 0;
+            $found = false;
+            foreach($temp_array as $tmp_key => $tmp_val)
+            {
+                if(!$found and strtolower($val[$subkey]) > strtolower($tmp_val[$subkey]))
+                {
+                    $temp_array = array_merge(    (array)array_slice($temp_array,0,$offset),
+                        array($key => $val),
+                        array_slice($temp_array,$offset)
+                    );
+                    $found = true;
+                }
+                $offset++;
+            }
+            if(!$found) $temp_array = array_merge($temp_array, array($key => $val));
+        }
+
+        if ($sort_ascending) $array = array_reverse($temp_array);
+
+        else $array = $temp_array;
+
+        return $array;
+    }
+
+    public function analyzKeywords($data){
+        $res[] = null;
+        $dt = array();
+        $ans = null;
+        $i = 0;
+        //print_r($data);
+        foreach ($data as $key => $value) {
+            $dt[$i] = array(
+                "relevance" =>floatval($value[0]->relevance),
+                "text" =>$value[0]->text
+            );
+            $i++;
+
+        }
+        $dt = $this->sksort($dt,"relevance",false);
+
+        $res = $dt[0];
+        return $res;
+    }
+
     public function analyzentities($input, $qtype, $focus)
     {
         $res["results"] = [];
