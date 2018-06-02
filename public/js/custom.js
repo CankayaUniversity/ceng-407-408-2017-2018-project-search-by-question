@@ -3,13 +3,13 @@ $(document).ready(function () {
     var tooltip = true;
 
 
-     $('#keyboardText').mlKeyboard({
+     /*$('#keyboardText').mlKeyboard({
                 layout: 'en_US',
                 active_shift: true,
                 active_caps: false,            
                 is_hidden: true,
                 trigger: '#keyforinput'
-            });
+        });*/
 
     $('[data-toggle="tooltip"]').tooltip();
 
