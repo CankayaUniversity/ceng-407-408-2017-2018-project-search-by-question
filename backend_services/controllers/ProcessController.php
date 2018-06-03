@@ -24,6 +24,7 @@ $classify = new NaturalLanguageClassifier();
 if (isset($_POST["data"])) {
     $answers = [];
     $possibleAnswer = [];
+    $possibleAnswerFrequency = [];
     $jsonData = json_decode($_POST["data"]);
     $targetData = null;
     $question = $f->cleanCode($jsonData->question);
@@ -82,26 +83,22 @@ if (isset($_POST["data"])) {
                 $look = $entity;
             }
             $i = 0;
-            if ($entity == 'JobTitle') {
+            if ($entity == 'JobTitle' || $entity == 'Definition') {
                 foreach ($texts as $text) {
-                    $analyz = json_decode($NLU->analyzeGet(trim($text)));
-                    foreach ($analyz->semantic_roles as $entities => $ens) {
-                        if (isset($ens->object->text)) {
-                            if (strpos(strtoupper($ens->sentence), strtoupper($topic["focus"]))) {
-                                if (!in_array($ens->object->text, $answers)) {
+                    $analyz = json_decode($NLU->analyzeGetDefault(trim($text)));
+                    if (isset($analyz->semantic_roles)) {
+                        foreach ($analyz->semantic_roles as $entities => $ens) {
+                            if (isset($ens->object->text)) {
+                                if (!in_array(trim(strip_tags($ens->object->text)), $answers)) {
                                     array_push($possibleAnswer, $ens->sentence);
                                     array_push($answers, $ens->object->text);
                                     $i++;
                                 }
+
                             }
-
                         }
-
                     }
 
-                    if ($i == 5) {
-                        break;
-                    }
                 }
             } else {
                 $iteration = 0;
@@ -140,6 +137,10 @@ if (isset($_POST["data"])) {
                 }
             }
 
+            if(count($answers)>7){
+                $answers=$f->fixResult($answers);
+            }
+
 
             if (count($answers) > 0) {
                 foreach ($answers as $answer) {
@@ -148,7 +149,11 @@ if (isset($_POST["data"])) {
             } else {
                 $ans = "We couldn't find answer";
             }
-            $possibleAnswerFrequency = $f->sksort($possibleAnswerFrequency, 'frequency');
+            if(count($possibleAnswerFrequency)>0){
+                $possibleAnswerFrequency = $f->sksort($possibleAnswerFrequency, 'frequency');
+            }else{
+                $possibleAnswerFrequency[0]["text"] = $possibleAnswer[0];
+            }
 
 
             $res = array("id" => md5(sha1(uniqid(microtime()))),

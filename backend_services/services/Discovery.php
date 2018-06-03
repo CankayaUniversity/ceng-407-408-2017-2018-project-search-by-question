@@ -18,11 +18,11 @@ Class Discovery {
     const BASE_URL = "https://gateway.watsonplatform.net/discovery/api/v1/environments";
 
     function __construct() {
-        $this->username = "9295560c-bbcf-4475-97f4-691fe576d313";
-        $this->password = "1qqyDYOumQHv";
-        $this->collectionID = "4c4e0be2-a655-4c99-b8db-6f0ba29cd321";
-        $this->confid = "602f5e9f-aa99-44c2-8ef5-cdcb4e92b450";
-        $this->invID = "ea7e6af5-2dcd-4da8-b9c2-4bcc20950534";
+        $this->username = "fbeb6764-d3a9-4714-83a7-870d7cd028ca";
+        $this->password = "AgpuodfC3QkD";
+        $this->collectionID = "508929cc-734b-426b-9a91-efe51d969127";
+        $this->confid = "bc9d3a77-fcef-4f33-9a74-05343cc45aa5";
+        $this->invID = "5e00737a-cb86-486f-87ed-74919560a60d";
         $this->documentID = "982df4f69f46be1577703d3d7856596c";
 
 

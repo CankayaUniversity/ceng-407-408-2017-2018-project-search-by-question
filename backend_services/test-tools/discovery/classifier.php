@@ -20,6 +20,6 @@ $classify = new NaturalLanguageClassifier();
 
 
 $functions->printr($classify->getClassifiers());
-//$classify->deleteClassifier("95bdc1x403-nlc-618");
-$functions->printr($classify->getClassifier("bc5490x411-nlc-54"));
+//$classify->deleteClassifier("bc5490x411-nlc-54");
+$functions->printr($classify->getClassifier("95c5b7x407-nlc-704"));
 //$functions->printr($classify->classify($q));

@@ -228,6 +228,20 @@ class Functions
 
         return $status;
 
+    }
 
+    public function fixResult($array){
+        $res = [];
+        $i = 0;
+        foreach ($array as $item) {
+            if(!in_array(trim(strip_tags(strtoupper($item))),$res)){
+                array_push($res,$item);
+                $i++;
+            }
+            if($i == 7){
+                break;
+            }
+        }
+        return $res;
     }
 }

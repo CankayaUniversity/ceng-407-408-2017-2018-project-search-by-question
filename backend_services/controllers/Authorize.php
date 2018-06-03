@@ -20,13 +20,14 @@ class Authorize
         'Nationality' => 1,
         'Language' => 4,
         'Currency' => 4,
-        'Temprature' => 5,
+        'Temperature' => 5,
         'Action' => 6,
         'Quantity' => 4,
         'Award' => 6,
         'Color' => 5,
         'Animal' => 1,
-        'Fruit' => 5
+        'Fruit' => 5,
+        'Definition' => 6
     );
 
     public function returnAuth($entityType){
