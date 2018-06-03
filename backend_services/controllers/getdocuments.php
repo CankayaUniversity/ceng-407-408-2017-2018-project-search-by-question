@@ -27,12 +27,13 @@ if (isset($_POST["data"])) {
                 $question = $value->datas->question;
                 $targetAns = $value->datas->target_data;
                 $datas = $value->datas->relatatedDatas->d;
+                $keys = $value->datas->answer_keys;
 
                 break;
             }
         }
 
-        echo json_encode(array("status" => 1, "answer" => $ans,"question" => $question,"target"=>$targetAns,"datas"=>$datas));
+        echo json_encode(array("status" => 1, "answer" => $ans,"question" => $question,"target"=>$targetAns,"datas"=>$datas,"keys" => $keys));
 
     }
 }

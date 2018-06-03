@@ -44,9 +44,9 @@ class Authorize
             $credentials["modelID"] = "10:4ce55c64-2c4d-49b5-b930-517464b126f4";
             $credentials["NLUID"] = 2;
         }elseif($this->classes[$entityType] == 3){
-            $credentials["username"] = "5947d2a0-3d4a-4eb7-8480-14d349d986e2";
-            $credentials["password"] = "AeZvQkoFu4T2";
-            $credentials["modelID"] = "10:e83fbf9b-7859-4344-bcef-25e157c1f0f9";
+            $credentials["username"] = "e9afd6cc-069d-4b44-9b1e-54ed6000b3bc";
+            $credentials["password"] = "PXWf6iDTy5eV";
+            $credentials["modelID"] = "10:128a86dd-f10f-4bcc-ac80-4bc12e456e17";
             $credentials["NLUID"] = 3;
         }elseif($this->classes[$entityType] == 4){
             $credentials["username"] = "3af80417-c54f-4f86-9d7c-1b8c4123c96c";

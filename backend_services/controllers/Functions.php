@@ -19,7 +19,7 @@ class Functions
             "DIE", "BORN", "DIED"
         ),
         "WHAT" => array(
-            "BORN", "YEAR", "MONTH", "DAY", "WON", "LOST","LOSE","CURRENCY","NATIONALITY","ETHNICITY","COLOR"
+            "BORN", "WON", "LOST","LOSE","CURRENCY","NATIONALITY","COLOR","MOST"
         ),
         "WHERE" => array(
             "DIE", "BORN", "DIED","WON", "LOST","LOSE"
@@ -39,6 +39,7 @@ class Functions
         $nstr = null;
         $expQuestion = explode(" ", $strUp);
 
+
         foreach ($this->ToBe as $key => $val) {
             if (in_array($val, $expQuestion)) {
                 unset($expQuestion[array_search($val,$expQuestion)]);
@@ -48,13 +49,14 @@ class Functions
             $nstr.=$v;
             $nstr.=" ";
         }
+        $nstr = str_replace("?"," ",$nstr);
         return trim($nstr);
     }
 
 
     public function cleanText($input)
     {
-        $strUp = strtoupper($input);
+        $strUp = strtoupper(str_replace("?"," ",$input));
         $res = array();
         $res["action"] = null;
         $expQuestion = explode(" ", $strUp);
@@ -198,7 +200,9 @@ class Functions
         $res["status"] = 0;
 
         foreach ($arr as $key => $val){
-            if(trim(strtoupper($val->datas->question)) == trim(strtoupper($question))){
+            $q = str_replace("?"," ",$question);
+            $dq =str_replace("?"," ",$val->datas->question);
+            if(trim(strtoupper($dq)) == trim(strtoupper($q))){
                 $res["qid"] = $val->id;
                 $res["status"] = 1;
             }

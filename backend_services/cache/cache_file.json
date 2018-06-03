@@ -1,69 +1,26 @@
 [
     {
-        "id": "1fc4110dd00c47aacd53cf84ee2f80ca",
+        "id": "9828ff8e310b576e7f976eae06dae949",
         "datas": {
-            "answer": "engineer,physicist,",
-            "question": "Who is tesla ?",
-            "target_data": "Nikola Tesla (Serbian Cyrillic: \u00d0\ufffd\u00d0\u00b8\u00d0\u00ba\u00d0\u00be\u00d0\u00bb\u00d0\u00b0 \u00d0\u00a2\u00d0\u00b5\u00d1\ufffd\u00d0\u00bb\u00d0\u00b0; 10 July 1856 \u00e2\u20ac\" 7 January 1943) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system.\n\n",
+            "answer": "Serb,Serbian,American,",
+            "question": "What was Nikola Tesla's ethnicity ?",
+            "target_data": "Tesla was born on 10 July [O.S. 28 June] 1856 into a Serb family in the village of Smiljan, Austrian Empire (modern-day Croatia). His father, Milutin Tesla, was a Serbian Orthodox priest. Tesla's mother, \u0110uka Tesla (n\u00e9e Mandi\u0107), whose father was also an Orthodox priest,:10 had a talent for making home craft tools, mechanical appliances, and the ability to memorize Serbian epic poems. \u0110uka had never received a formal education. Nikola credited his eidetic memory and creative abilities to his mother's genetics and influence. Tesla's progenitors were from western Serbia, near Montenegro.:12",
+            "answer_keys": [
+                "Serb",
+                "Serbian",
+                "American"
+            ],
             "relatatedDatas": {
                 "d": [
-                    "Nikola Tesla (Serbian Cyrillic: \u00d0\ufffd\u00d0\u00b8\u00d0\u00ba\u00d0\u00be\u00d0\u00bb\u00d0\u00b0 \u00d0\u00a2\u00d0\u00b5\u00d1\ufffd\u00d0\u00bb\u00d0\u00b0; 10 July 1856 \u00e2\u20ac\" 7 January 1943) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system.\n\n",
-                    "Tesla gained experience in telephony and electrical engineering before emigrating to the United States in 1884 to work for Thomas Edison in New York City. He soon struck out on his own with financial backers, setting up laboratories and companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla for a short time as a consultant. His work in the formative years of electric power development was involved in a corporate alternating current\/direct current &quot;War of Currents&quot; as well as various patent battles.\n\n",
-                    "Tesla went on to pursue his ideas of wireless lighting and electricity distribution in his high-voltage, high-frequency power experiments in New York and Colorado Springs, and made early (1893) pronouncements on the possibility of wireless communication with his devices. He tried to put these ideas to practical use in an ill-fated attempt at intercontinental wireless transmission, his unfinished Wardenclyffe Tower project. In his lab he also conducted a range of experiments with mechanical oscillators\/generators, electrical discharge tubes, and early X-ray imaging. He also built a wireless controlled boat, one of the first ever exhibited.\n\n",
-                    "Tesla was renowned for his achievements and showmanship, eventually earning him a reputation in popular culture as an archetypal &quot;mad scientist&quot;. His patents earned him a considerable amount of money, much of which was used to finance his own projects with varying degrees of success.:121,154 He lived most of his life in a series of New York hotels, through his retirement. Tesla died on 7 January 1943. His work fell into relative obscurity after his death, but in 1960 the General Conference on Weights and Measures named the SI unit of magnetic flux density the tesla in his honor. There has been a resurgence in popular interest in Tesla since the 1990s."
+                    "Tesla was born on 10 July [O.S. 28 June] 1856 into a Serb family in the village of Smiljan, Austrian Empire (modern-day Croatia). His father, Milutin Tesla, was a Serbian Orthodox priest. Tesla's mother, \u0110uka Tesla (n\u00e9e Mandi\u0107), whose father was also an Orthodox priest,:10 had a talent for making home craft tools, mechanical appliances, and the ability to memorize Serbian epic poems. \u0110uka had never received a formal education. Nikola credited his eidetic memory and creative abilities to his mother's genetics and influence. Tesla's progenitors were from western Serbia, near Montenegro.:12",
+                    "Nikola Tesla 10 July 1856 7 January 1943) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system."
                 ]
-            }
-        }
-    },
-    {
-        "id": "3511e335635b51ae3d5041128f089481",
-        "datas": {
-            "answer": "founder",
-            "question": "Who is Ataturk ?",
-            "target_data": "Ataturk is the founder of Republic of Turkey.",
-            "relatatedDatas": {
-                "d": [
-                    "Ataturk is the founder of Republic of Turkey."
-                ]
-            }
-        }
-    },
-    {
-        "id": "571d318dff2c063532c5f7afdfb98392",
-        "datas": {
-            "answer": "engineer,physicist,",
-            "question": "Who is Tesla ?",
-            "target_data": "Nikola Tesla (Serbian Cyrillic: \u00d0\ufffd\u00d0\u00b8\u00d0\u00ba\u00d0\u00be\u00d0\u00bb\u00d0\u00b0 \u00d0\u00a2\u00d0\u00b5\u00d1\ufffd\u00d0\u00bb\u00d0\u00b0; 10 July 1856 \u00e2\u20ac\" 7 January 1943) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system.\n\n",
-            "relatatedDatas": {
-                "d": [
-                    "Nikola Tesla (Serbian Cyrillic: \u00d0\ufffd\u00d0\u00b8\u00d0\u00ba\u00d0\u00be\u00d0\u00bb\u00d0\u00b0 \u00d0\u00a2\u00d0\u00b5\u00d1\ufffd\u00d0\u00bb\u00d0\u00b0; 10 July 1856 \u00e2\u20ac\" 7 January 1943) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system.\n\n",
-                    "Tesla gained experience in telephony and electrical engineering before emigrating to the United States in 1884 to work for Thomas Edison in New York City. He soon struck out on his own with financial backers, setting up laboratories and companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla for a short time as a consultant. His work in the formative years of electric power development was involved in a corporate alternating current\/direct current &quot;War of Currents&quot; as well as various patent battles.\n\n",
-                    "Tesla went on to pursue his ideas of wireless lighting and electricity distribution in his high-voltage, high-frequency power experiments in New York and Colorado Springs, and made early (1893) pronouncements on the possibility of wireless communication with his devices. He tried to put these ideas to practical use in an ill-fated attempt at intercontinental wireless transmission, his unfinished Wardenclyffe Tower project. In his lab he also conducted a range of experiments with mechanical oscillators\/generators, electrical discharge tubes, and early X-ray imaging. He also built a wireless controlled boat, one of the first ever exhibited.\n\n",
-                    "Tesla was renowned for his achievements and showmanship, eventually earning him a reputation in popular culture as an archetypal &quot;mad scientist&quot;. His patents earned him a considerable amount of money, much of which was used to finance his own projects with varying degrees of success.:121,154 He lived most of his life in a series of New York hotels, through his retirement. Tesla died on 7 January 1943. His work fell into relative obscurity after his death, but in 1960 the General Conference on Weights and Measures named the SI unit of magnetic flux density the tesla in his honor. There has been a resurgence in popular interest in Tesla since the 1990s."
-                ]
-            }
-        }
-    },
-    {
-        "id": "62549bc5ef44e8792dd0396de0c25869",
-        "datas": {
-            "answer": null,
-            "question": "Who is stephen hawking ?",
-            "target_data": null,
-            "relatatedDatas": {
-                "d": []
-            }
-        }
-    },
-    {
-        "id": "b73ebb2e019491ed65ca6f7594bae5ad",
-        "datas": {
-            "answer": null,
-            "question": "Who is nikola tesla ?",
-            "target_data": null,
-            "relatatedDatas": {
-                "d": []
-            }
+            },
+            "question_keys": [
+                "NIKOLA",
+                "TESLA'S",
+                "ETHNICITY"
+            ]
         }
     }
 ]

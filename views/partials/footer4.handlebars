@@ -57,10 +57,15 @@
                 var i = 0;
                 if (data.status === 1) {
                     $(".loadergif").hide("slow");
+                    var anwers_keys = data.keys;
                     $.each(data.datas, function (key, val) {
+                        $(anwers_keys).each(function (index,elements) {
+                            val = val.replace(elements,"<span style='background: green;color: white;padding: 0px 5px'>"+elements+"</span>")
+                        });
                         $("#answers").append("<article class=\"search-result row\"> <div class=\"col-xs-12 col-sm-12 col-md-12 excerpet\"> <p> "+ val +" </p><span class=\"plus\"><a href=\"#\" title=\"Lorem ipsum\"><i class=\"glyphicon glyphicon-plus\"></i></a></span> </div><span class=\"clearfix borda\"></span> </article><hr>")
                         i++;
                     });
+
                     $("#document_count").html(i);
                     $("#qarea").html(data.question);
                 }

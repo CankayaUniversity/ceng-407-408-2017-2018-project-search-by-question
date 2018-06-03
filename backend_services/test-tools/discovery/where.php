@@ -32,8 +32,6 @@ $documents = json_decode($discovery->query($topic["focus"]));
 //$f->printr($documents);
 $entity = $qanalyz->classes[0]->class_name;
 $f->printr($entity);
-
-
 $nlucredentials = $authorize->returnAuth($entity);
 
 $NLU = new NaturalLanguageUnderstanding($nlucredentials["username"], $nlucredentials["password"], $nlucredentials["modelID"]);

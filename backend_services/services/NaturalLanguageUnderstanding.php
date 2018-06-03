@@ -24,7 +24,7 @@ class NaturalLanguageUnderstanding
 		$url = $url . "&text={text_input}&features={features}&return_analyzed_text={return_text}&clean={clean}&fallback_to_raw={fallback_to_raw}&concepts.limit={concept_limit}&emotion.document={emotion_document}&entities.limit={entities_limit}&entities.mentions={entities_mentions}&entities.model={entities_model}&entities.emotion={entities_emotion}&entities.sentiment={entities_sentiment}&keywords.limit={keywords_limit}&keywords.emotion={keywords_emotion}&keywords.sentiment={keywords_sentiment}&relations.model={relations_model}&semantic_roles.limit={semantic_roles_limit}&semantic_roles.entities={semantic_roles_entities}&semantic_roles.keywords={semantic_roles_keywords}&sentiment.document={sentiment_document}";
 
 		$url = str_replace("{text_input}", urlencode($input), $url);
-        $url = str_replace("{features}", urlencode("entities"), $url);
+        $url = str_replace("{features}", urlencode("entities,semantic_roles"), $url);
         $url = str_replace("{clean}", "true", $url);
         $url = str_replace("{fallback_to_raw}", "true", $url);
         $url = str_replace("{concept_limit}", 8, $url);
