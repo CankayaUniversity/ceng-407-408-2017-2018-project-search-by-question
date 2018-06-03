@@ -39,6 +39,8 @@ function sendQuestion() {
                 url: params.site + "controllers/ProcessController.php",
                 data: dataString,
                 success: function (data) {
+                    console.log(data);
+
                     $(".loadergif").hide("slow");
                     window.location.href = params.mainUrl+"result?id="+data.id;
                 }

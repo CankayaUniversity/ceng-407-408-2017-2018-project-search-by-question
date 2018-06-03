@@ -16,7 +16,7 @@ if (isset($_POST["data"])) {
 
     if ($access_token == $jsonData->token) {
 
-        $datas = file_get_contents(dirname(__DIR__) . "/cache/cache_file.json");
+        $datas = file_get_contents(dirname(__DIR__) . "/cache/answers.json");
 
         $parseData = json_decode($datas);
         foreach ($parseData as $parseDatum => $value) {

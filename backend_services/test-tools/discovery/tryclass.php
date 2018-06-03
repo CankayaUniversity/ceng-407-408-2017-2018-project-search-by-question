@@ -16,11 +16,15 @@ $authorize = new Authorize();
 $f = new Functions();
 $classify = new NaturalLanguageClassifier();
 
-$question = "What is bitcoin ?";
-
+$question = "What language is spoken i ?";
+echo "Question:";$f->printr($question);
+echo "-------------------------"."<br>";
 $qanalyz = json_decode($classify->classify($question));
+//$f->printr($qanalyz);
 $entity = $qanalyz->classes[0]->class_name;
-//$f->printr($entity);
+echo "Question Entity";
+$f->printr($entity);
+echo "------------------------"."<br>";
 $answers = [];
 
 $topic = $f->cleanText($question);
@@ -28,7 +32,8 @@ $topic = $f->cleanText($question);
 $expQuestion = explode(" ", $topic["focus"]);
 //$f->printr($expQuestion);
 $documents = json_decode($discovery->query($topic["focus"]));
-
+$f->printr($documents);
+die();
 
 $nlucredentials = $authorize->returnAuth($entity);
 

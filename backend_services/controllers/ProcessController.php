@@ -29,14 +29,15 @@ if (isset($_POST["data"])) {
     $targetData = null;
     $question = $f->cleanCode($jsonData->question);
     $ans = null;
+    $res = [];
 
     if ($access_token == $jsonData->token) {
 
         if ($f->checkQuestion($question) == 1) {
             $oldquestion = $f->checkOldQuestions($question);
 
-            if($oldquestion["status"] == 1){
-                echo json_encode(array("id"=>$oldquestion["qid"]));
+            if ($oldquestion["status"] == 1) {
+                echo json_encode(array("id" => $oldquestion["qid"]));
                 exit();
             }
 
@@ -137,8 +138,8 @@ if (isset($_POST["data"])) {
                 }
             }
 
-            if(count($answers)>7){
-                $answers=$f->fixResult($answers);
+            if (count($answers) > 7) {
+                $answers = $f->fixResult($answers);
             }
 
 
@@ -146,31 +147,53 @@ if (isset($_POST["data"])) {
                 foreach ($answers as $answer) {
                     $ans .= $answer . ",";
                 }
+
+                if (count($possibleAnswerFrequency) > 0) {
+                    $possibleAnswerFrequency = $f->sksort($possibleAnswerFrequency, 'frequency');
+                } else {
+                    $possibleAnswerFrequency[0]["text"] = $possibleAnswer[0];
+                }
+
+                $res = array("id" => md5(sha1(uniqid(microtime()))),
+                    "datas" => array(
+                        "answer" => $ans, "question" => $question, "target_data" => $possibleAnswerFrequency[0]["text"],
+                        "answer_keys" => $answers,
+                        "relatatedDatas" => array(
+                            "d" => $possibleAnswer
+                        ),
+                        "question_keys" => $expQuestion
+                    ));
+
+                $jsondt = file_get_contents(dirname(__DIR__) . "/cache/cache_file.json");
+                $arr_data = json_decode($jsondt, true);
+                array_push($arr_data, $res);
+                $jsondt = json_encode($arr_data, JSON_PRETTY_PRINT);
+                file_put_contents(dirname(__DIR__) . "/cache/cache_file.json", $jsondt);
+
+                $jsondt = file_get_contents(dirname(__DIR__) . "/cache/answers.json");
+                $arr_data = json_decode($jsondt, true);
+                array_push($arr_data, $res);
+                $jsondt = json_encode($arr_data, JSON_PRETTY_PRINT);
+                file_put_contents(dirname(__DIR__) . "/cache/answers.json", $jsondt);
+
             } else {
                 $ans = "We couldn't find answer";
+                $res = array("id" => md5(sha1(uniqid(microtime()))),
+                    "datas" => array(
+                        "answer" => $ans, "question" => $question, "target_data" => null,
+                        "answer_keys" => null,
+                        "relatatedDatas" => array(
+                            "d" => null
+                        ),
+                        "question_keys" => null
+                    ));
+                $jsondt = file_get_contents(dirname(__DIR__) . "/cache/answers.json");
+                $arr_data = json_decode($jsondt, true);
+                array_push($arr_data, $res);
+                $jsondt = json_encode($arr_data, JSON_PRETTY_PRINT);
+                file_put_contents(dirname(__DIR__) . "/cache/answers.json", $jsondt);
             }
-            if(count($possibleAnswerFrequency)>0){
-                $possibleAnswerFrequency = $f->sksort($possibleAnswerFrequency, 'frequency');
-            }else{
-                $possibleAnswerFrequency[0]["text"] = $possibleAnswer[0];
-            }
 
-
-            $res = array("id" => md5(sha1(uniqid(microtime()))),
-                "datas" => array(
-                    "answer" => $ans, "question" => $question, "target_data" => $possibleAnswerFrequency[0]["text"],
-                    "answer_keys" => $answers,
-                    "relatatedDatas" => array(
-                        "d" => $possibleAnswer
-                    ),
-                    "question_keys"=>$expQuestion
-                ));
-
-            $jsondt = file_get_contents(dirname(__DIR__) . "/cache/cache_file.json");
-            $arr_data = json_decode($jsondt, true);
-            array_push($arr_data, $res);
-            $jsondt = json_encode($arr_data, JSON_PRETTY_PRINT);
-            file_put_contents(dirname(__DIR__) . "/cache/cache_file.json", $jsondt);
 
             echo json_encode($res);
 
